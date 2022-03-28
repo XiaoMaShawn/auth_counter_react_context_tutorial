@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { useContext } from 'react';
 import './App.css';
+import Infor from './pages/Infor';
+import Login from './pages/Login';
+import CounterProvider from './providers/CounterProvider';
+import { authContext } from './providers/AuthProvider';
+
 
 function App() {
+  const { auth, user, login, logout } = useContext(authContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h1>
+        My Auth Counter
+      </h1>
+      <CounterProvider>
+        {!auth && <Login login={login} />}
+        {auth && <Infor logout={logout} user={user} />}
+      </CounterProvider>
+    </main>
   );
 }
 
