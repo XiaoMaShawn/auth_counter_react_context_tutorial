@@ -14,6 +14,10 @@ function App() {
         My Auth Counter
       </h1>
       <CounterProvider>
+        {/* {const [auth, setAuth] = useState(false);} */}
+        {/* {when auth = false, show login page} */}
+        {/* {when auth = true, show logout page} */}
+        {/* {you need to consider about not only auth's value, but also the && logic} */}
         {!auth && <Login login={login} />}
         {auth && <Infor logout={logout} user={user} />}
       </CounterProvider>
